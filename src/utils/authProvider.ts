@@ -1,5 +1,5 @@
 const authProvider = {
-    login: ({ username, password }) => {
+    login: ({ username, password }: any) => {
         if (username !== 'john' || password !== '123') {
             return Promise.reject();
         }
@@ -12,7 +12,7 @@ const authProvider = {
     },
         checkAuth: () =>
         localStorage.getItem('username') ? Promise.resolve() : Promise.reject(),
-    checkError:  (error) => {
+    checkError:  (error: any) => {
         const status = error.status;
         if (status === 401 || status === 403) {
             localStorage.removeItem('username');
